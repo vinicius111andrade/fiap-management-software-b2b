@@ -1,5 +1,5 @@
-package org.example;
-import org.example.factory.ConnectionFactory;
+package org.softwarehouse;
+import org.softwarehouse.db.DatabaseConnector;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ public class App
 //                    System.err.println(e.getMessage());
 //                }
         try {
-            Connection conexao = ConnectionFactory.getConnection();
+            Connection dbConnection = DatabaseConnector.getDbConnection();
             System.out.println("Conexão realizada!");
         } catch (SQLException e) {
             System.err.println(e.getMessage());

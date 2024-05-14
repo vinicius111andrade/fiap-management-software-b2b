@@ -1,19 +1,20 @@
-package org.example.view;
-import org.example.dao.ProdutoDao;
-import org.example.exception.EntidadeNaoEcontradaException;
-import org.example.model.Produto;
+package org.softwarehouse.view;
+
+import org.softwarehouse.dao.ProductDao;
+import org.softwarehouse.exception.EntityNotFoundException;
+
 import java.sql.SQLException;
 
-public class RemocaoProdutoView {
+public class ProductDeleteView {
     public static void main(String[] args) {
         try {
-            ProdutoDao dao = new ProdutoDao();
+            ProductDao dao = new ProductDao();
             dao.remover(61);
-            dao.fecharConezao();
+            dao.closeConnection();
             System.out.println("Produto Removido!");
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-        } catch (EntidadeNaoEcontradaException e) {
+        } catch (EntityNotFoundException e) {
             System.err.println("Produto não encontrado");
         }
     }

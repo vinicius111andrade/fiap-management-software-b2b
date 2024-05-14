@@ -1,17 +1,20 @@
-package org.example.view;
-import org.example.dao.ProdutoDao;
-import org.example.exception.EntidadeNaoEcontradaException;
-import org.example.model.Produto;
+package org.softwarehouse.view;
+
+import org.softwarehouse.dao.ProductDao;
+import org.softwarehouse.exception.EntityNotFoundException;
+import org.softwarehouse.model.Product;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-public class ProdutoView {
+
+public class ProductView {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ProdutoDao dao;
+        ProductDao dao;
         System.out.println("Bem vindo ao FIAP Store!");
         try {
-            dao = new ProdutoDao();
+            dao = new ProductDao();
             int escolha;
             do {
                 System.out.println("Escolha uma opção: \n1-Cadastrar \n2-Pesquisar por Código \n3-Listar \n4-Atualizar \n5-Remover \n0-Sair");
@@ -39,12 +42,12 @@ public class ProdutoView {
                         System.out.println("Opção inválida! Tente novamente.");
                 }
             } while (escolha != 0);
-            dao.fecharConezao();
+            dao.closeConnection();
         } catch (SQLException e) {
             System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
     }
-    private static void cadastrar(Scanner scanner, ProdutoDao dao) {
+    private static void cadastrar(Scanner scanner, ProductDao dao) {
         System.out.println("Digite o nome do produto:");
         String nome = scanner.next() + scanner.nextLine();
         System.out.println("Digite a descrição do produto:");
@@ -53,41 +56,41 @@ public class ProdutoView {
         double valor = scanner.nextDouble();
         System.out.println("Digite o estoque do produto:");
         int estoque = scanner.nextInt();
-        Produto novoProduto = new Produto(nome, descricao, valor, estoque);
+        Product novoProduct = new Product(nome, descricao, valor, estoque);
         try {
-            dao.cadastrar(novoProduto);
+            dao.register(novoProduct);
             System.out.println("Produto cadastrado com sucesso!");
         } catch (SQLException e) {
             System.err.println("Erro ao cadastrar produto: " + e.getMessage());
         }
     }
-    private static void pesquisarProduto(Scanner scanner, ProdutoDao dao) {
+    private static void pesquisarProduto(Scanner scanner, ProductDao dao) {
         System.out.println("Digite o código do produto:");
         long codigo = scanner.nextLong();
         try {
-            Produto produto = dao.pesquisar(codigo);
+            Product product = dao.search(codigo);
             System.out.println("Produto encontrado:");
-            System.out.println(produto.getCodigo() + " - " + produto.getNome() + ", " + produto.getDescricao() + ", R$" + produto.getValor() + " - Estoque: " + produto.getEstoque() );
-        } catch (SQLException | EntidadeNaoEcontradaException e) {
+            System.out.println(product.getCode() + " - " + product.getName() + ", " + product.getDescription() + ", R$" + product.getValue() + " - Estoque: " + product.getQuantity() );
+        } catch (SQLException | EntityNotFoundException e) {
             System.err.println("Erro ao pesquisar produto: " + e.getMessage());
         }
     }
-    private static void listar(ProdutoDao dao) {
+    private static void listar(ProductDao dao) {
         try {
-            List<Produto> produtos = dao.listar();
+            List<Product> products = dao.listAllProducts();
             System.out.println("Lista de produtos:");
-            for (Produto produto : produtos) {
-                System.out.println(produto.getCodigo() + " - " + produto.getNome() + ", " + produto.getDescricao() + ", R$" + produto.getValor() + " - Estoque: " + produto.getEstoque() );
+            for (Product product : products) {
+                System.out.println(product.getCode() + " - " + product.getName() + ", " + product.getDescription() + ", R$" + product.getValue() + " - Estoque: " + product.getQuantity() );
             }
         } catch (SQLException e) {
             System.err.println("Erro ao listar produtos: " + e.getMessage());
         }
     }
-    private static void atualizar(Scanner scanner, ProdutoDao dao) {
+    private static void atualizar(Scanner scanner, ProductDao dao) {
         System.out.println("Digite o código do produto que deseja atualizar:");
         long codigo = scanner.nextLong();
         try {
-            Produto produto = dao.pesquisar(codigo);
+            Product product = dao.search(codigo);
             System.out.println("Digite o novo nome do produto:");
             String nome = scanner.next() + scanner.nextLine();
             System.out.println("Digite a nova descrição do produto:");
@@ -96,23 +99,23 @@ public class ProdutoView {
             double valor = scanner.nextDouble();
             System.out.println("Digite o novo estoque do produto:");
             int estoque = scanner.nextInt();
-            produto.setNome(nome);
-            produto.setDescricao(descricao);
-            produto.setValor(valor);
-            produto.setEstoque(estoque);
-            dao.atualizar(produto);
+            product.setName(nome);
+            product.setDescription(descricao);
+            product.setValue(valor);
+            product.setQuantity(estoque);
+            dao.update(product);
             System.out.println("Produto atualizado com sucesso!");
-        } catch (SQLException | EntidadeNaoEcontradaException e) {
+        } catch (SQLException | EntityNotFoundException e) {
             System.err.println("Erro ao atualizar produto: " + e.getMessage());
         }
     }
-    private static void removerProduto(Scanner scanner, ProdutoDao dao) {
+    private static void removerProduto(Scanner scanner, ProductDao dao) {
         System.out.println("Digite o código do produto que deseja remover:");
         long codigo = scanner.nextLong();
         try {
             dao.remover(codigo);
             System.out.println("Produto removido com sucesso!");
-        } catch (SQLException | EntidadeNaoEcontradaException e) {
+        } catch (SQLException | EntityNotFoundException e) {
             System.err.println("Erro ao remover produto: " + e.getMessage());
         }
     }
