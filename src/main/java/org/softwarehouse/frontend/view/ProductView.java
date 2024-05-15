@@ -1,8 +1,8 @@
-package org.softwarehouse.view;
+package org.softwarehouse.frontend.view;
 
-import org.softwarehouse.dao.ProductDao;
-import org.softwarehouse.exception.EntityNotFoundException;
-import org.softwarehouse.model.Product;
+import org.softwarehouse.backend.data.dao.ProductDao;
+import org.softwarehouse.backend.exception.EntityNotFoundException;
+import org.softwarehouse.backend.model.ProductEntity;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -56,7 +56,7 @@ public class ProductView {
         double valor = scanner.nextDouble();
         System.out.println("Digite o estoque do produto:");
         int estoque = scanner.nextInt();
-        Product novoProduct = new Product(nome, descricao, valor, estoque);
+        ProductEntity novoProduct = new ProductEntity(nome, descricao, valor, estoque);
         try {
             dao.register(novoProduct);
             System.out.println("Produto cadastrado com sucesso!");
@@ -68,7 +68,7 @@ public class ProductView {
         System.out.println("Digite o código do produto:");
         long codigo = scanner.nextLong();
         try {
-            Product product = dao.search(codigo);
+            ProductEntity product = dao.search(codigo);
             System.out.println("Produto encontrado:");
             System.out.println(product.getCode() + " - " + product.getName() + ", " + product.getDescription() + ", R$" + product.getValue() + " - Estoque: " + product.getQuantity() );
         } catch (SQLException | EntityNotFoundException e) {
@@ -77,9 +77,9 @@ public class ProductView {
     }
     private static void listar(ProductDao dao) {
         try {
-            List<Product> products = dao.listAllProducts();
+            List<ProductEntity> products = dao.listAllProducts();
             System.out.println("Lista de produtos:");
-            for (Product product : products) {
+            for (ProductEntity product : products) {
                 System.out.println(product.getCode() + " - " + product.getName() + ", " + product.getDescription() + ", R$" + product.getValue() + " - Estoque: " + product.getQuantity() );
             }
         } catch (SQLException e) {
@@ -90,7 +90,7 @@ public class ProductView {
         System.out.println("Digite o código do produto que deseja atualizar:");
         long codigo = scanner.nextLong();
         try {
-            Product product = dao.search(codigo);
+            ProductEntity product = dao.search(codigo);
             System.out.println("Digite o novo nome do produto:");
             String nome = scanner.next() + scanner.nextLine();
             System.out.println("Digite a nova descrição do produto:");

@@ -1,6 +1,6 @@
-package org.softwarehouse.view;
-import org.softwarehouse.dao.ProductDao;
-import org.softwarehouse.model.Product;
+package org.softwarehouse.frontend.view;
+import org.softwarehouse.backend.data.dao.ProductDao;
+import org.softwarehouse.backend.model.ProductEntity;
 
 import java.sql.SQLException;
 
@@ -9,7 +9,7 @@ public class ProductRegistrationView {
     public static void main (String[] args){
         try{
             ProductDao dao = new ProductDao();
-            Product product = new Product("Calça Jeans", "Azul", 50.0, 10 );
+            ProductEntity product = new ProductEntity("Calça Jeans", "Azul", 50.0, 10 );
             dao.register(product);
             dao.closeConnection();
             System.out.println("Produto cadastrado!");

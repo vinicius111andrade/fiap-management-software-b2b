@@ -1,8 +1,8 @@
-package org.softwarehouse.view;
+package org.softwarehouse.frontend.view;
 
-import org.softwarehouse.dao.ProductDao;
-import org.softwarehouse.exception.EntityNotFoundException;
-import org.softwarehouse.model.Product;
+import org.softwarehouse.backend.data.dao.ProductDao;
+import org.softwarehouse.backend.exception.EntityNotFoundException;
+import org.softwarehouse.backend.model.ProductEntity;
 
 import java.sql.SQLException;
 
@@ -10,7 +10,7 @@ public class ProductSearchView {
     public static void main(String[] args) {
         try {
             ProductDao dao = new ProductDao();
-            Product product = dao.search(1);
+            ProductEntity product = dao.search(1);
             System.out.println(product.getCode()+ " " + product.getName() + ", " + product.getDescription());
             System.out.println("R$ " + product.getValue() + ", " + product.getQuantity());
             dao.closeConnection();

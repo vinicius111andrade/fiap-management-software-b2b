@@ -1,5 +1,5 @@
 package org.softwarehouse;
-import org.softwarehouse.db.DatabaseConnector;
+import org.softwarehouse.backend.data.db.DatabaseConnector;
 
 import java.sql.Connection;
 import java.sql.SQLException;

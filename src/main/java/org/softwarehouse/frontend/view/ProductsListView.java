@@ -1,7 +1,7 @@
-package org.softwarehouse.view;
+package org.softwarehouse.frontend.view;
 
-import org.softwarehouse.dao.ProductDao;
-import org.softwarehouse.model.Product;
+import org.softwarehouse.backend.data.dao.ProductDao;
+import org.softwarehouse.backend.model.ProductEntity;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,8 +11,8 @@ public class ProductsListView {
     public static void main(String[] args) {
         try{
             ProductDao dao = new ProductDao();
-            List<Product> products = dao.listAllProducts();
-            for (Product product : products) {
+            List<ProductEntity> products = dao.listAllProducts();
+            for (ProductEntity product : products) {
                 System.out.println(product.getCode() + " " + product.getName() + ", " + product.getDescription() + ", R$ " + product.getValue() + ", " + product.getQuantity());
             }
             dao.closeConnection();

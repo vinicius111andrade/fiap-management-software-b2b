@@ -1,8 +1,8 @@
-package org.softwarehouse.dao;
+package org.softwarehouse.backend.data.dao;
 
-import org.softwarehouse.exception.EntityNotFoundException;
-import org.softwarehouse.db.DatabaseConnector;
-import org.softwarehouse.model.Product;
+import org.softwarehouse.backend.exception.EntityNotFoundException;
+import org.softwarehouse.backend.data.db.DatabaseConnector;
+import org.softwarehouse.backend.model.ProductEntity;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,21 +14,21 @@ public class ProductDao {
     public ProductDao() throws SQLException{
         dbConnection = DatabaseConnector.getDbConnection();
     }
-    public void register(Product product) throws SQLException {
+    public void register(ProductEntity productEntity) throws SQLException {
         PreparedStatement sqlStatement = dbConnection.prepareStatement(
                 "INSERT INTO tb_produto (cd_produto, nm_produto, ds_produto, vl_produto, nr_estoque) " +
                         "VALUES (sequencia_produto.nextval, ?, ?, ?, ?)"
         );
-        sqlStatement.setString(1, product.getName());
-        sqlStatement.setString(2, product.getDescription());
-        sqlStatement.setDouble(3, product.getValue());
-        sqlStatement.setInt(4, product.getQuantity());
+        sqlStatement.setString(1, productEntity.getName());
+        sqlStatement.setString(2, productEntity.getDescription());
+        sqlStatement.setDouble(3, productEntity.getValue());
+        sqlStatement.setInt(4, productEntity.getQuantity());
         sqlStatement.executeUpdate();
     }
     public void closeConnection() throws SQLException{
         dbConnection.close();
     }
-    public Product search(long code) throws SQLException, EntityNotFoundException {
+    public ProductEntity search(long code) throws SQLException, EntityNotFoundException {
         PreparedStatement sqlStatement = dbConnection.prepareStatement(
                 "SELECT * FROM tb_produto WHERE cd_produto = ?"
         );
@@ -39,33 +39,33 @@ public class ProductDao {
         return parseProduct(result);
     }
 
-    private Product parseProduct(ResultSet result) throws SQLException {
+    private ProductEntity parseProduct(ResultSet result) throws SQLException {
         Long id = result.getLong("cd_produto");
         String name = result.getString("nm_produto");
         String description = result.getString("ds_produto");
         double value = result.getDouble("vl_produto");
         int quantity = result.getInt("nr_estoque");
-        return new Product(id, name, description, value, quantity);
+        return new ProductEntity(id, name, description, value, quantity);
     }
-    public List<Product> listAllProducts() throws SQLException {
+    public List<ProductEntity> listAllProducts() throws SQLException {
         PreparedStatement sqlStatement = dbConnection.prepareStatement("SELECT * FROM tb_produto");
         ResultSet result = sqlStatement.executeQuery();
-        List<Product> list = new ArrayList<>();
+        List<ProductEntity> list = new ArrayList<>();
         while (result.next()){
             list.add(parseProduct(result));
         }
         return list;
     }
-    public void update(Product product) throws SQLException {
+    public void update(ProductEntity productEntity) throws SQLException {
         PreparedStatement sqlStatement = dbConnection.prepareStatement(
                 "UPDATE tb_produto SET nm_produto = ?, ds_produto = ?," +
                         " vl_produto = ?, nr_estoque = ? where cd_produto = ?"
         );
-        sqlStatement.setString(1, product.getName());
-        sqlStatement.setString(2, product.getDescription());
-        sqlStatement.setDouble(3, product.getValue());
-        sqlStatement.setInt(4, product.getQuantity());
-        sqlStatement.setLong(5, product.getCode());
+        sqlStatement.setString(1, productEntity.getName());
+        sqlStatement.setString(2, productEntity.getDescription());
+        sqlStatement.setDouble(3, productEntity.getValue());
+        sqlStatement.setInt(4, productEntity.getQuantity());
+        sqlStatement.setLong(5, productEntity.getCode());
         sqlStatement.executeUpdate();
     }
     public void remover(long code) throws SQLException, EntityNotFoundException {

@@ -1,6 +1,6 @@
-package org.softwarehouse.model;
+package org.softwarehouse.backend.model;
 
-public class Product {
+public class ProductEntity {
 
     private Long code;
     private String name;
@@ -8,7 +8,7 @@ public class Product {
     private Double value;
     private Integer quantity;
 
-    public Product(Long code, String name, String description, Double value, Integer quantity) {
+    public ProductEntity(Long code, String name, String description, Double value, Integer quantity) {
         this.code = code;
         this.name = name;
         this.description = description;
@@ -16,7 +16,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String name, String description, Double value, Integer quantity) {
+    public ProductEntity(String name, String description, Double value, Integer quantity) {
         this.name = name;
         this.description = description;
         this.value = value;

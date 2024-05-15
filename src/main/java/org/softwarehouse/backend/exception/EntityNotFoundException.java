@@ -1,4 +1,4 @@
-package org.softwarehouse.exception;
+package org.softwarehouse.backend.exception;
 
 public class EntityNotFoundException extends Exception{
     public EntityNotFoundException(String message) {
