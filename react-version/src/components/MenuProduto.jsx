@@ -1,4 +1,3 @@
-// src/components/MenuProduto.jsx
 import React, { useState } from 'react';
 import '../css/App.css'; // Importando o CSS global
 import Header from './Header'; // Importando o Header
@@ -21,10 +20,6 @@ const MenuProduto = () => {
     setModalVisible(false);
   };
 
-  const confirmarExclusao = () => {
-    alert(`Produto ${produtoNome} excluído!`);
-    fecharModal();
-  };
 
   const produtos = [
     { nome: 'Produto 1', tipo: 'Tipo 1' },
@@ -83,11 +78,12 @@ const MenuProduto = () => {
             <p>Tem certeza que deseja proceder com a exclusão?</p>
             <div className="modal-buttons">
               <button className="cancel-button" onClick={fecharModal}>Cancelar</button>
-              <button className="confirm-button" onClick={confirmarExclusao}>Confirmar</button>
+              <button className="confirm-button" onClick={fecharModal}>Confirmar</button>
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 };
