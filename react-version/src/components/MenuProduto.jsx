@@ -1,7 +1,8 @@
 // src/components/MenuProduto.jsx
 import React, { useState } from 'react';
 import '../css/App.css'; // Importando o CSS global
-import logoskina from '../assets/img/logoskina.png';
+import Header from './Header'; // Importando o Header
+//import Footer from './Footer'; // Importando o Footer
 import backArrow from '../assets/img/back-arrow.png';
 import productIcon from '../assets/img/product-icon.png';
 
@@ -35,11 +36,7 @@ const MenuProduto = () => {
 
   return (
     <div>
-      <header>
-        <img src={logoskina} alt="Logo ESKINA" id="logo" />
-        <h1>ESKINA PACAEMBU</h1>
-      </header>
-
+      <Header />
       <main>
         <div className="back-button">
           <a href="javascript:history.back()">
@@ -51,12 +48,12 @@ const MenuProduto = () => {
         <hr className="menu-divider menu-divider-80" />
 
         <div className="content">
-          <a href="../pages/AdicionarProduto.html" className="add-button">Adicionar</a>
+          <a href="/adicionar-produto" className="add-button">Adicionar</a>
 
           <div className="list">
             {produtos.map((produto, index) => (
               <div className="item" key={index}>
-                <a href="DetalheProduto.html" className="product-link">
+                <a href="/detalhe-produto" className="product-link">
                   <img src={productIcon} alt="Produto" />
                   <span>{produto.nome}</span>
                 </a>
@@ -71,11 +68,7 @@ const MenuProduto = () => {
           </div>
         </div>
       </main>
-
-      <footer>
-        <p className="credits">Built in 2024, powered by FIAP</p>
-      </footer>
-
+  
       {modalVisible && (
         <div id="modal-aviso" className="modal">
           <div className="modal-content">
