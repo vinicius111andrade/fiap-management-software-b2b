@@ -4,10 +4,10 @@
 
   <groupId>org.example</groupId>
   <artifactId>restaurantmanager</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>bancodados</name>
+  <name>database</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -22,11 +22,18 @@
       <scope>test</scope>
     </dependency>
 
-        <dependency>
-          <groupId>com.oracle.database.jdbc</groupId>
-          <artifactId>ojdbc8</artifactId>
-          <version>23.2.0.0</version>
-        </dependency>
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc8</artifactId>
+      <version>23.2.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.26</version>
+    </dependency>
+
 
   </dependencies>
 </project>
