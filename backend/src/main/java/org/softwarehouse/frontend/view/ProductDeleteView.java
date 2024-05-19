@@ -1,7 +1,7 @@
 package org.softwarehouse.frontend.view;
 
-import org.softwarehouse.backend.data.dao.ProductDao;
-import org.softwarehouse.backend.exception.EntityNotFoundException;
+import org.softwarehouse.data.dao.ProductDao;
+import org.softwarehouse.exception.EntityNotFoundException;
 
 import java.sql.SQLException;
 

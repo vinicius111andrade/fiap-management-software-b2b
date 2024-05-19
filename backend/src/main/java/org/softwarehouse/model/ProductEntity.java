@@ -1,4 +1,4 @@
-package org.softwarehouse.backend.model;
+package org.softwarehouse.model;
 
 public class ProductEntity {
 

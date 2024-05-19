@@ -1,4 +1,4 @@
-package org.softwarehouse.backend.data.db;
+package org.softwarehouse.data.db;
 
 public class DatabaseCredentials {
     static final String URL = "jdbc:oracle:thin:@Captain_Jhonny:1521:XE";

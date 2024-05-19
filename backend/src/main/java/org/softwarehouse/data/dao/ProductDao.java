@@ -1,8 +1,8 @@
-package org.softwarehouse.backend.data.dao;
+package org.softwarehouse.data.dao;
 
-import org.softwarehouse.backend.exception.EntityNotFoundException;
-import org.softwarehouse.backend.data.db.DatabaseConnector;
-import org.softwarehouse.backend.model.ProductEntity;
+import org.softwarehouse.exception.EntityNotFoundException;
+import org.softwarehouse.data.db.DatabaseConnector;
+import org.softwarehouse.model.ProductEntity;
 
 import java.sql.*;
 import java.util.ArrayList;

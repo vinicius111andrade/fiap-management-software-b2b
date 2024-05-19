@@ -1,4 +1,4 @@
-package org.softwarehouse.backend.data.db;
+package org.softwarehouse.data.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
