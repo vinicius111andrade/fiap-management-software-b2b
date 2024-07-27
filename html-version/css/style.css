@@ -48,20 +48,6 @@ header h1 {
     text-align: center; /* Alinha o texto ao centro */
 }
 
-.menu-divider {
-    border: 0;
-    border-top: 1px solid #e0e0e0;
-    margin: 20px 0; /* Espaçamento acima e abaixo */
-}
-
-.menu-divider-80 {
-    width: 80%;
-    margin: 0 auto; /* Centraliza a linha horizontal */
-}
-
-.menu-divider-100 {
-    width: 100%;
-}
 
 main .content {
     display: flex;
@@ -380,7 +366,7 @@ footer {
     }
 
     .custom-button, .add-button {
-        width: 100%;
+        width: 200%;
         max-width: 200px;
         margin: 10px 0; /* Espaçamento vertical entre botões */
     }

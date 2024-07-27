@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/App.css'; // Importando o CSS global
 import logoskina from '../assets/img/logoskina.png'; // Importando a imagem do logo
 import backArrow from '../assets/img/back-arrow.png'; // Importando a imagem do botão de voltar
-import Header from './Header'; // Importando o Header
+import Header from '../components/Header'; // Importando o Header
 //import Footer from './Footer'; // Importando o Footer
 
 const DetalheProduto = () => {
@@ -11,7 +11,7 @@ const DetalheProduto = () => {
       <Header />
       <main>
         <div className="back-button">
-          <a href="javascript:history.back()">
+          <a href="./menu-produto">
             <img src={backArrow} alt="Voltar" />
           </a>
         </div>
@@ -22,7 +22,9 @@ const DetalheProduto = () => {
         <div className="content">
           <div className="action-buttons">
             <a href="/adicionar-produto" className="update-button">Atualizar</a>
-            <button className="delete-button">Deletar</button>
+            <a href="/menu-produto" className="delete-button">
+              Deletar
+            </a>
           </div>
           {/* Adicionando a área de detalhes do produto */}
           <div className="details">

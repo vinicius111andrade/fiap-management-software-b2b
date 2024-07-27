@@ -95,6 +95,8 @@ main .content {
     align-items: center;
     justify-content: center;
     z-index: 1001;
+    background-color: white; /* Garante o fundo branco */
+    border: none;          /* Remove qualquer borda ou contorno */
 }
 
 .back-button img {
@@ -110,6 +112,12 @@ main .content {
     height: 100%;
     text-decoration: none;
 }
+
+.back-button button { 
+    background-color: white; 
+    border: none;
+    /* outros estilos para o botão */
+  }
 
 /* Novo botão verde de adicionar */
 .add-button {
@@ -239,7 +247,9 @@ main .content {
     margin-right: 10px;
 }
 
-.item a.product-link {
+
+
+.item a.all-link {
     display: flex;
     align-items: center;
     text-decoration: none; /* Remove sublinhado */
@@ -254,18 +264,21 @@ main .content {
 .delete-button {
     background-color: #FF4C4C; /* Cor vermelha */
     color: white;
+    font-size: 12px; 
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .delete-button:hover {
     background-color: #FF0000; /* Cor vermelha mais escura */
 }
 
-/* Estilos para o formulário de produtos */
-.product-form {
+
+/* Estilos para o formulário de Fornecedor */
+.all-form {
     width: 100%;
     max-width: 600px;
     display: flex;
@@ -276,15 +289,16 @@ main .content {
     border-radius: 10px;
 }
 
-.product-form label {
+.all-form label {
     font-weight: bold;
     text-align: left; /* Alinha o texto à esquerda */
 }
 
-.product-form input[type="text"],
-.product-form input[type="number"],
-.product-form input[type="date"],
-.product-form select {
+.all-form input[type="text"],
+.all-form input[type="number"],
+.all-form input[type="tel"],
+.all-form input[type="date"],
+.all-form select {
     width: 100%;
     max-width: 600px;
     padding: 10px;
@@ -293,12 +307,12 @@ main .content {
     background-color: #ECF3F5;
 }
 
-.product-form input[type="text"]#name,
-.product-form input[type="number"]#quantity,
-.product-form input[type="text"]#price,
-.product-form input[type="text"]#address,
-.product-form input[type="text"]#phone,
-.product-form input[type="date"]#date {
+.all-form input[type="text"]#name,
+.all-form input[type="number"]#quantity,
+.all-form input[type="text"]#price,
+.all-form input[type="text"]#address,
+.all-form input[type="text"]#phone,
+.all-form input[type="date"]#date {
     max-width: 580px; /* Define uma largura menor para esses campos */
 }
 

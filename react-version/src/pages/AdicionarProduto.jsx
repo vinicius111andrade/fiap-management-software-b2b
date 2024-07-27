@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/App.css'; // Importando o CSS global
 import logoskina from '../assets/img/logoskina.png'; // Importando a imagem do logo
 import backArrow from '../assets/img/back-arrow.png'; // Importando a imagem do botão de voltar
-import Header from './Header'; // Importando o Header
+import Header from '../components/Header'; // Importando o Header
 //import Footer from './Footer'; // Importando o Footer
 
 const AdicionarProduto = () => {
@@ -21,7 +21,7 @@ const AdicionarProduto = () => {
 
         <div className="content">
           {/* Formulário de exemplo */}
-          <form className="product-form">
+          <form className="all-form">
             <label htmlFor="name">Nome *</label>
             <input type="text" id="name" name="name" required />
 

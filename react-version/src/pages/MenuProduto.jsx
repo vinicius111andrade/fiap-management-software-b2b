@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/App.css'; // Importando o CSS global
-import Header from './Header'; // Importando o Header
+import Header from '../components/Header'; // Importando o Header
+import { useNavigate } from 'react-router-dom'; // Importe o useNavigate
 //import Footer from './Footer'; // Importando o Footer
 import backArrow from '../assets/img/back-arrow.png';
 import productIcon from '../assets/img/product-icon.png';
@@ -9,7 +10,6 @@ const MenuProduto = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [produtoNome, setProdutoNome] = useState('');
   const [produtoTipo, setProdutoTipo] = useState('');
-
   const mostrarModal = (nome, tipo) => {
     setProdutoNome(nome);
     setProdutoTipo(tipo);
@@ -29,15 +29,21 @@ const MenuProduto = () => {
     { nome: 'Produto 5', tipo: 'Tipo 5' },
   ];
 
+  const navigate = useNavigate(); // Inicialize o useNavigate
+
+  const handleVoltar = () => {
+    navigate(-1); // Navega para a página anterior
+  };
+
   return (
     <div>
       <Header />
       <main>
-        <div className="back-button">
-          <a href="javascript:history.back()">
+          <div className="back-button">
+          <a href="./">
             <img src={backArrow} alt="Voltar" />
           </a>
-        </div>
+          </div>
         <hr className="menu-divider menu-divider-100" />
         <h2 className="menu-title">PRODUTOS</h2>
         <hr className="menu-divider menu-divider-80" />
@@ -48,7 +54,7 @@ const MenuProduto = () => {
           <div className="list">
             {produtos.map((produto, index) => (
               <div className="item" key={index}>
-                <a href="/detalhe-produto" className="product-link">
+                <a href="/detalhe-produto" className="all-link">
                   <img src={productIcon} alt="Produto" />
                   <span>{produto.nome}</span>
                 </a>

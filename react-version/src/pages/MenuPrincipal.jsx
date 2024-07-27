@@ -1,6 +1,6 @@
 // src/components/MenuPrincipal.jsx
 import React from 'react';
-import Header from './Header'; // Importando o Header
+import Header from '../components/Header'; // Importando o Header
 //import Footer from './Footer'; // Importando o Footer <Footer />
 import '../css/App.css'; // Importando o CSS global
 
