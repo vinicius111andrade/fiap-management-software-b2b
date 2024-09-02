@@ -1,65 +1,105 @@
-import React, { useState } from 'react';
-import ModalAviso from '../components/AvisoModal'; // Certifique-se de ter o componente ModalAviso
-import Header from '../components/Header';
-import backArrow from '../assets/img/back-arrow.png';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+import FormInput from '../components/FormInput';
+import Modal from '../components/Modal';
 
-const DetalheFornecedor = ({ fornecedor }) => { // Recebe dados do fornecedor
+const DetalheFornecedor = () => {
+  const [fornecedor, setFornecedor] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Simula o carregamento dos dados do fornecedor
+    const fetchFornecedor = async () => {
+      const response = await new Promise(resolve => 
+        setTimeout(() => resolve({ 
+          id: id, 
+          nome: 'Fornecedor Exemplo', 
+          endereco: 'Rua Exemplo, 123', 
+          telefone: '(11) 1234-5678' 
+        }), 1000)
+      );
+      setFornecedor(response);
+    };
+
+    fetchFornecedor();
+  }, [id]);
 
   const handleDelete = () => {
     setModalVisible(true);
   };
 
-  const handleFecharModal = () => {
-    setModalVisible(false);
+  const handleUpdate = () => {
+    navigate(`/adicionar-fornecedor/${id}`);
+  };
+
+  const handleCancel = () => {
+    navigate('/menu-fornecedor');
   };
 
   const handleConfirmarExclusao = () => {
-    // Lógica para deletar o fornecedor (substitua com a sua implementação)
     console.log(`Deletando fornecedor: ${fornecedor.nome}`);
-
-    // Volta para a página anterior após a exclusão
-    navigate('/menu-fornecedor'); 
+    setModalVisible(false);
+    navigate('/menu-fornecedor');
   };
 
+  if (!fornecedor) {
+    return <Layout title="Carregando..."><p>Carregando detalhes do fornecedor...</p></Layout>;
+  }
+
   return (
-    <div>
-      <Header />
-      <main>
-        <div className="back-button">
-          <a href="/menu-fornecedor">
-            <img src={backArrow} alt="Voltar" />
-          </a>
-        </div>
-        <hr className="menu-divider menu-divider-100" />
-        <h2 className="menu-title">FORNECEDOR</h2>
-        <hr className="menu-divider menu-divider-80" />
-
-        <div className="content">
-          <div className="action-buttons">
-            <a href="/adicionar-fornecedor" className="update-button">Atualizar</a>
-            <button className="delete-button" onClick={handleDelete}>Deletar</button>
+    <Layout title="FORNECEDOR">
+      <div className="content">
+        <form className="all-form">
+          <FormInput
+            label="Nome"
+            id="nome"
+            name="nome"
+            value={fornecedor.nome}
+            readOnly
+          />
+          <FormInput
+            label="Endereço"
+            id="endereco"
+            name="endereco"
+            value={fornecedor.endereco}
+            readOnly
+          />
+          <FormInput
+            label="Telefone"
+            id="telefone"
+            name="telefone"
+            value={fornecedor.telefone}
+            readOnly
+          />
+          <div className="form-buttons">
+            <button type="button" className="cancel-button" onClick={handleCancel}>Cancelar</button>
+            <button type="button" className="save-button" onClick={handleUpdate}>Atualizar</button>
           </div>
-          {/* Detalhes do Fornecedor */}
-          <div className="details">
-            <input type="text" readOnly value={fornecedor ? fornecedor.nome : 'Nome'} />
-            <input type="text" readOnly value={fornecedor ? fornecedor.endereco : 'Endereço'} />
-            <input type="text" readOnly value={fornecedor ? fornecedor.telefone : 'Telefone'} />
-          </div>
-        </div>
-      </main>
-
-      {/* Modal de Confirmação */}
-      {modalVisible && (
-        <ModalAviso
-          mensagem={`Tem certeza que deseja deletar o fornecedor "${fornecedor.nome}"?`}
-          onFechar={handleFecharModal}
-          onConfirmar={handleConfirmarExclusao}
-        />
-      )}
-    </div>
+        </form>
+      </div>
+      
+      <Modal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        title="DELETAR FORNECEDOR"
+        content={
+          <>
+            <p>Você está prestes a <span className="delete-text">deletar</span> o fornecedor "<span id="supplier-name">{fornecedor.nome}</span>" do sistema. Esta ação é irreversível.</p>
+            <p>Detalhes do Fornecedor:</p>
+            <ul>
+              <li>Nome: <span id="supplier-detail-name">{fornecedor.nome}</span></li>
+              <li>Endereço: <span id="supplier-detail-address">{fornecedor.endereco}</span></li>
+              <li>Telefone: <span id="supplier-detail-phone">{fornecedor.telefone}</span></li>
+            </ul>
+            <p>Tem certeza que deseja proceder com a exclusão?</p>
+          </>
+        }
+        onConfirm={handleConfirmarExclusao}
+      />
+    </Layout>
   );
 };
 

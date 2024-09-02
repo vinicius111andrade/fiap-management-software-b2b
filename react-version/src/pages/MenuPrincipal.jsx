@@ -1,27 +1,33 @@
-// src/components/MenuPrincipal.jsx
 import React from 'react';
-import Header from '../components/Header'; // Importando o Header
-//import Footer from './Footer'; // Importando o Footer <Footer />
-import '../css/App.css'; // Importando o CSS global
+import MenuLayout from '../components/MenuLayout';
+import MenuButton from '../components/MenuButton';
+
+import productIcon from '../assets/img/product-icon-white.png';
+import deliveryIcon from '../assets/img/delivery-icon-white.png';
+import supplierIcon from '../assets/img/supplier-icon-white.png';
+import userIcon from '../assets/img/user-white.png';
 
 const MenuPrincipal = () => {
+  const menuItems = [
+    { href: "/menu-produto", text: "PRODUTO", icon: productIcon },
+    { href: "/menu-pedido", text: "PEDIDO", icon: deliveryIcon },
+    { href: "/menu-fornecedor", text: "FORNECEDOR", icon: supplierIcon },
+    { href: "/menu-usuario", text: "USUÁRIO", icon: userIcon },
+  ];
+
   return (
-    <div>
-      <Header />
-      <main>
-        <hr className="menu-divider menu-divider-100" />
-        <h2 className="menu-title">MENU PRINCIPAL</h2>
-        <hr className="menu-divider menu-divider-80" />
-
-        <div className="content">
-          <a href="/menu-produto" className="custom-button">PRODUTO</a>
-          <a href="/menu-fornecedor" className="custom-button">FORNECEDOR</a>
-          <a href="/menu-usuario" className="custom-button">USUÁRIO</a>
-          <a href="/menu-pedido" className="custom-button">PEDIDO</a>
-        </div>
-      </main>
-
-    </div>
+    <MenuLayout title="MENU PRINCIPAL">
+      <div className="menu-buttons-horizontal">
+        {menuItems.map((item, index) => (
+          <MenuButton 
+            key={index} 
+            href={item.href} 
+            text={item.text} 
+            icon={item.icon}
+          />
+        ))}
+      </div>
+    </MenuLayout>
   );
 };
 

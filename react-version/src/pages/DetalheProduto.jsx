@@ -1,43 +1,120 @@
-import React from 'react';
-import '../css/App.css'; // Importando o CSS global
-import logoskina from '../assets/img/logoskina.png'; // Importando a imagem do logo
-import backArrow from '../assets/img/back-arrow.png'; // Importando a imagem do botão de voltar
-import Header from '../components/Header'; // Importando o Header
-//import Footer from './Footer'; // Importando o Footer
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+import FormInput from '../components/FormInput';
+import Modal from '../components/Modal';
 
 const DetalheProduto = () => {
+  const [produto, setProduto] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Simula o carregamento dos dados do produto
+    const fetchProduto = async () => {
+      const response = await new Promise(resolve => 
+        setTimeout(() => resolve({ 
+          id: id, 
+          nome: 'Produto Exemplo',
+          tipo: 'Tipo Exemplo',
+          quantidade: '100',
+          preco: '10.00',
+          lote: 'LOTE123'
+        }), 1000)
+      );
+      setProduto(response);
+    };
+
+    fetchProduto();
+  }, [id]);
+
+  const handleDelete = () => {
+    setModalVisible(true);
+  };
+
+  const handleUpdate = () => {
+    navigate(`/adicionar-produto/${id}`);
+  };
+
+  const handleCancel = () => {
+    navigate('/menu-produto');
+  };
+
+  const handleConfirmarExclusao = () => {
+    console.log(`Deletando produto: ${produto.nome}`);
+    setModalVisible(false);
+    navigate('/menu-produto');
+  };
+
+  if (!produto) {
+    return <Layout title="Carregando..."><p>Carregando detalhes do produto...</p></Layout>;
+  }
+
   return (
-    <div>
-      <Header />
-      <main>
-        <div className="back-button">
-          <a href="./menu-produto">
-            <img src={backArrow} alt="Voltar" />
-          </a>
-        </div>
-        <hr className="menu-divider menu-divider-100" />
-        <h2 className="menu-title">PRODUTOS</h2>
-        <hr className="menu-divider menu-divider-80" />
-
-        <div className="content">
-          <div className="action-buttons">
-            <a href="/adicionar-produto" className="update-button">Atualizar</a>
-            <a href="/menu-produto" className="delete-button">
-              Deletar
-            </a>
+    <Layout title="PRODUTO">
+      <div className="content">
+        <form className="all-form">
+          <FormInput
+            label="Nome"
+            id="nome"
+            name="nome"
+            value={produto.nome}
+            readOnly
+          />
+          <FormInput
+            label="Tipo"
+            id="tipo"
+            name="tipo"
+            value={produto.tipo}
+            readOnly
+          />
+          <FormInput
+            label="Quantidade"
+            id="quantidade"
+            name="quantidade"
+            value={produto.quantidade}
+            readOnly
+          />
+          <FormInput
+            label="Preço"
+            id="preco"
+            name="preco"
+            value={produto.preco}
+            readOnly
+          />
+          <FormInput
+            label="Lote"
+            id="lote"
+            name="lote"
+            value={produto.lote}
+            readOnly
+          />
+          <div className="form-buttons">
+            <button type="button" className="cancel-button" onClick={handleCancel}>Cancelar</button>
+            <button type="button" className="save-button" onClick={handleUpdate}>Atualizar</button>
           </div>
-          {/* Adicionando a área de detalhes do produto */}
-          <div className="details">
-            <input type="text" readOnly value="Nome" />
-            <input type="text" readOnly value="Tipo" />
-            <input type="text" readOnly value="Quantidade" />
-            <input type="text" readOnly value="Preço" />
-            <input type="text" readOnly value="Lote" />
-          </div>
-        </div>
-      </main>
-
-    </div>
+        </form>
+      </div>
+      
+      <Modal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        title="DELETAR PRODUTO"
+        content={
+          <>
+            <p>Você está prestes a <span className="delete-text">deletar</span> o produto "<span id="product-name">{produto.nome}</span>" do sistema. Esta ação é irreversível.</p>
+            <p>Detalhes do Produto:</p>
+            <ul>
+              <li>Nome: <span id="product-detail-name">{produto.nome}</span></li>
+              <li>Tipo: <span id="product-detail-type">{produto.tipo}</span></li>
+            </ul>
+            <p>Tem certeza que deseja proceder com a exclusão?</p>
+          </>
+        }
+        onConfirm={handleConfirmarExclusao}
+      />
+    </Layout>
   );
 };
 

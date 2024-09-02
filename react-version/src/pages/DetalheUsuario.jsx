@@ -1,66 +1,99 @@
-import React, { useState } from 'react';
-import ModalAviso from '../components/AvisoModal';
-import Header from '../components/Header';
-import backArrow from '../assets/img/back-arrow.png';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+import FormInput from '../components/FormInput';
+import Modal from '../components/Modal';
 
-const DetalheUsuario = ({ usuario }) => { // Prop "usuario" com letra minúscula
+const DetalheUsuario = () => {
+  const [usuario, setUsuario] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Simula o carregamento dos dados do usuário
+    const fetchUsuario = async () => {
+      const response = await new Promise(resolve => 
+        setTimeout(() => resolve({ 
+          id: id, 
+          nome: 'Usuário Exemplo',
+          tipo: 'Administrador'
+        }), 1000)
+      );
+      setUsuario(response);
+    };
+
+    fetchUsuario();
+  }, [id]);
 
   const handleDelete = () => {
     setModalVisible(true);
   };
 
-  const handleFecharModal = () => {
-    setModalVisible(false);
+  const handleUpdate = () => {
+    navigate(`/adicionar-tipo-usuario/${id}`);
+  };
+
+  const handleCancel = () => {
+    navigate('/menu-usuario');
   };
 
   const handleConfirmarExclusao = () => {
-    // Lógica para deletar o usuário (substitua com a sua implementação)
     console.log(`Deletando usuário: ${usuario.nome}`);
+    setModalVisible(false);
+    navigate('/menu-usuario');
   };
 
-  const handleVoltar = () => {
-    navigate(-1);
-  };
+  if (!usuario) {
+    return <Layout title="Carregando..."><p>Carregando detalhes do usuário...</p></Layout>;
+  }
 
   return (
-    <div>
-      <Header />
-      <main>
-        <div className="back-button">
-        <button onClick={handleVoltar}>
-            <img src={backArrow} alt="Voltar" />
-          </button>
+    <Layout title="USUÁRIO">
+      <div className="content">
+        <div className="action-buttons">
+          <a href="/adicionar-tipo-usuario" className="other-button">Tipo Usuário</a>
         </div>
-        <hr className="menu-divider menu-divider-100" />
-        <h2 className="menu-title">USUÁRIO</h2>
-        <hr className="menu-divider menu-divider-80" />
-
-        <div className="content">
-          <div className="action-buttons">
-            <a href="/adicionar-usuario" className="update-button">Atualizar</a> {/* Corrigido para minúsculas */}
-            <button className="delete-button" onClick={handleDelete}>Deletar</button>
-            <a href="/adicionar-tipo-usuario" class="other-button">Tipo Usuário</a>
+        <form className="all-form">
+          <FormInput
+            label="Nome"
+            id="nome"
+            name="nome"
+            value={usuario.nome}
+            readOnly
+          />
+          <FormInput
+            label="Tipo"
+            id="tipo"
+            name="tipo"
+            value={usuario.tipo}
+            readOnly
+          />
+          <div className="form-buttons">
+            <button type="button" className="cancel-button" onClick={handleCancel}>Cancelar</button>
+            <button type="button" className="save-button" onClick={handleUpdate}>Atualizar</button>
           </div>
-          {/* Detalhes do Usuário */}
-          <div className="details">
-            <input type="text" readOnly value={usuario ? usuario.nome : 'Nome'} />
-            <input type="text" readOnly value={usuario ? usuario.tipo : 'Tipo'} />
-          </div> 
-        </div>
-      </main>
-
-      {/* Modal de Confirmação */}
-      {modalVisible && (
-        <ModalAviso
-          mensagem={`Tem certeza que deseja deletar o usuário "${usuario.nome}"?`}
-          onFechar={handleFecharModal}
-          onConfirmar={handleConfirmarExclusao}
-        />
-      )}
-    </div>
+        </form>
+      </div>
+      
+      <Modal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        title="DELETAR USUÁRIO"
+        content={
+          <>
+            <p>Você está prestes a <span className="delete-text">deletar</span> o usuário "<span id="user-name">{usuario.nome}</span>" do sistema. Esta ação é irreversível.</p>
+            <p>Detalhes do Usuário:</p>
+            <ul>
+              <li>Nome: <span id="user-detail-name">{usuario.nome}</span></li>
+              <li>Tipo: <span id="user-detail-type">{usuario.tipo}</span></li>
+            </ul>
+            <p>Tem certeza que deseja proceder com a exclusão?</p>
+          </>
+        }
+        onConfirm={handleConfirmarExclusao}
+      />
+    </Layout>
   );
 };
 
