@@ -1,63 +1,101 @@
-import React from 'react';
-import '../css/App.css'; // Importando o CSS global
-import logoskina from '../assets/img/logoskina.png'; // Importando a imagem do logo
-import backArrow from '../assets/img/back-arrow.png'; // Importando a imagem do botão de voltar
-import Header from '../components/Header'; // Importando o Header
-//import Footer from './Footer'; // Importando o Footer
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+import Form from '../components/Form';
+import FormInput from '../components/FormInput';
+import FormSelect from '../components/FormSelect';
 
 const AdicionarProduto = () => {
+  const navigate = useNavigate();
+  const [produto, setProduto] = useState({
+    nome: '',
+    tipo: '',
+    quantidade: '',
+    preco: '',
+    lote: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduto(prevProduto => ({
+      ...prevProduto,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Dados do Produto:', produto);
+    navigate('/menu-produto');
+  };
+
+  const handleCancel = () => {
+    navigate('/menu-produto');
+  };
+
+  const tipoOptions = [
+    { value: 'tipo1', label: 'Tipo 1' },
+    { value: 'tipo2', label: 'Tipo 2' },
+    // Adicione mais tipos conforme necessário
+  ];
+
+  const loteOptions = [
+    { value: 'lote1', label: 'Lote 1' },
+    { value: 'lote2', label: 'Lote 2' },
+    // Adicione mais lotes conforme necessário
+  ];
+
   return (
-    <div>
-      <Header />
-      <main>
-        <div className="back-button">
-          <a href="javascript:history.back()">
-            <img src={backArrow} alt="Voltar" />
-          </a>
-        </div>
-        <hr className="menu-divider menu-divider-100" />
-        <h2 className="menu-title">PRODUTOS</h2>
-        <hr className="menu-divider menu-divider-80" />
-
-        <div className="content">
-          {/* Formulário de exemplo */}
-          <form className="all-form">
-            <label htmlFor="name">Nome *</label>
-            <input type="text" id="name" name="name" required />
-
-            <label htmlFor="type">Tipo *</label>
-            <select id="type" name="type" required>
-              <option value="">Selecione</option>
-              <option value="type1">Tipo 1</option>
-              <option value="type2">Tipo 2</option>
-            </select>
-
-            <label htmlFor="quantity">Quantidade *</label>
-            <input type="number" id="quantity" name="quantity" required />
-
-            <label htmlFor="price">Preço *</label>
-            <input type="text" id="price" name="price" required />
-
-            <label htmlFor="batch">Lote *</label>
-            <select id="batch" name="batch" required>
-              <option value="">Selecione</option>
-              <option value="batch1">Lote 1</option>
-              <option value="batch2">Lote 2</option>
-            </select>
-
-            <div className="form-buttons">
-              <a href="/menu-produto">
-                <button type="button" className="cancel-button">Cancelar</button>
-              </a>
-              <a href="/menu-produto">
-                <button type="button" className="save-button">Salvar</button>
-              </a>
-            </div>
-          </form>
-        </div>
-      </main>
-
-    </div>
+    <Layout title="PRODUTOS">
+      <Form onSubmit={handleSubmit} onCancel={handleCancel}>
+        <FormInput
+          label="Nome"
+          id="nome"
+          name="nome"
+          type="text"
+          value={produto.nome}
+          onChange={handleChange}
+          required
+        />
+        <FormSelect
+          label="Tipo"
+          id="tipo"
+          name="tipo"
+          value={produto.tipo}
+          onChange={handleChange}
+          options={tipoOptions}
+          required
+        />
+        <FormInput
+          label="Quantidade"
+          id="quantidade"
+          name="quantidade"
+          type="number"
+          value={produto.quantidade}
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          label="Preço"
+          id="preco"
+          name="preco"
+          type="number"
+          step="0.01"
+          value={produto.preco}
+          onChange={handleChange}
+          required
+        />
+        <FormSelect
+          label="Lote"
+          id="lote"
+          name="lote"
+          value={produto.lote}
+          onChange={handleChange}
+          options={loteOptions}
+          required
+        />
+      </Form>
+    </Layout>
   );
 };
 

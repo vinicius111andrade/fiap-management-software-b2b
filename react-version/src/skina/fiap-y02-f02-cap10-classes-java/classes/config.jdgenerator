@@ -1,0 +1,231 @@
+==== CONFIGS ====		
+{
+    "base_path": "c:\\Users\\Vinicius\\Projects\\fiap-y02-f02-cap10-classes-java\\classes",
+    "out": "c:\\Users\\Vinicius\\Projects\\fiap-y02-f02-cap10-classes-java\\classes\\javadoc",
+    "javadoc_executable": "C:\\Program Files\\Java\\jdk-11\\bin\\javadoc.exe",
+    "exclude": [],
+    "raw_params": ""
+}
+
+==== COMMAND ====
+"C:\Program Files\Java\jdk-11\bin\javadoc.exe" 
+	-sourcepath "c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes" 
+	-d "c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc" 
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Batch.java"
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java"
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java"
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\ProductSupplier.java"
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java"
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java"
+	"c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\UserType.java"
+
+
+==== JAVADOC OUTPUT ====
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Batch.java...
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java...
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java...
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\ProductSupplier.java...
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java...
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java...
+Loading source file c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\UserType.java...
+Constructing Javadoc information...
+Creating destination directory: "c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\"
+Standard Doclet version 11.0.18
+Building tree for all the packages and classes...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\Batch.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\BuyOrder.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\Product.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\ProductSupplier.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\Supplier.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\User.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\UserType.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\package-summary.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\package-tree.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\constant-values.html...
+Building index for all the packages and classes...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\overview-tree.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\index-all.html...
+Building index for all classes...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\allclasses-index.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\allpackages-index.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\deprecated-list.html...
+Building index for all classes...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\allclasses.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\allclasses.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\index.html...
+Generating c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\javadoc\help-doc.html...
+3 errors
+54 warnings
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Batch.java:15: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Batch.java:16: warning: no description for @param
+     * @param productId
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Batch.java:17: warning: no description for @param
+     * @param expireDate
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Batch.java:18: warning: no description for @param
+     * @param entryDate
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java:17: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java:18: warning: no description for @param
+     * @param name
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java:19: warning: no description for @param
+     * @param date
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java:20: warning: no description for @param
+     * @param userId
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java:21: warning: no description for @param
+     * @param productId
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\BuyOrder.java:22: warning: no description for @param
+     * @param quantity
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:14: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:15: warning: no description for @param
+     * @param name
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:16: warning: no description for @param
+     * @param type
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:17: warning: no description for @param
+     * @param quantity
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:18: warning: no description for @param
+     * @param price
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:36: warning: no description for @param
+     * @param n
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:45: warning: no description for @param
+     * @param n
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:54: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:55: warning: no description for @param
+     * @param name
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:56: warning: no description for @param
+     * @param type
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:57: warning: no description for @param
+     * @param quantity
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:58: warning: no description for @param
+     * @param price
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:73: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:74: warning: no description for @param
+     * @param name
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:75: warning: no description for @param
+     * @param type
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:76: warning: no description for @param
+     * @param quantity
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:77: warning: no description for @param
+     * @param price
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Product.java:92: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\ProductSupplier.java:13: warning: no description for @param
+    * @param id
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\ProductSupplier.java:14: warning: no description for @param
+    * @param productId
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\ProductSupplier.java:15: warning: no description for @param
+    * @param supplierId
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:14: warning: no description for @param
+    * @param id
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:15: warning: no description for @param
+    * @param name
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:16: warning: no description for @param
+    * @param address
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:17: warning: no description for @param
+    * @param phone
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:18: error: invalid use of @return
+    * @return Supplier
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:35: warning: no description for @param
+    * @param name
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:36: warning: no description for @param
+    * @param address
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:37: warning: no description for @param
+    * @param phone
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:38: error: invalid use of @return
+    * @return Supplier
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:53: warning: no description for @param
+    * @param name
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:54: warning: no description for @param
+    * @param address
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:55: warning: no description for @param
+    * @param phone
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:68: error: @param name not found
+    * @param id
+             ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:68: warning: no description for @param
+    * @param id
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:69: warning: no description for @param
+    * @param name
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:70: warning: no description for @param
+    * @param address
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:71: warning: no description for @param
+    * @param phone
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:74: warning: no @param for Id
+    public Supplier update(
+                    ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\Supplier.java:87: warning: no description for @param
+    * @param id
+      ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java:12: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java:13: warning: no description for @param
+     * @param name
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java:14: warning: no description for @param
+     * @param userTypeId
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java:24: warning: no description for @param
+     * @param name
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\User.java:25: warning: no description for @param
+     * @param userTypeId
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\UserType.java:11: warning: no description for @param
+     * @param id
+       ^
+c:\Users\Vinicius\Projects\fiap-y02-f02-cap10-classes-java\classes\UserType.java:12: warning: no description for @param
+     * @param role
+       ^
+
+

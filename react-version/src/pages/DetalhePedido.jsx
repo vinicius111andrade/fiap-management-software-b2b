@@ -1,67 +1,112 @@
-import React, { useState } from 'react';
-import ModalAviso from '../components/AvisoModal';
-import Header from '../components/Header';
-import backArrow from '../assets/img/back-arrow.png';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+import FormInput from '../components/FormInput';
+import Modal from '../components/Modal';
 
-const DetalhePedido = ({ pedido }) => { // Recebe dados do pedido
+const DetalhePedido = () => {
+  const [pedido, setPedido] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const { id } = useParams();
   const navigate = useNavigate();
-  const { id } = useParams(); // Obtenha o ID do pedido da URL
+
+  useEffect(() => {
+    // Simula o carregamento dos dados do pedido
+    const fetchPedido = async () => {
+      const response = await new Promise(resolve => 
+        setTimeout(() => resolve({ 
+          id: id, 
+          data: '2024-08-29',
+          usuario: 'João Silva',
+          produto: 'Produto Exemplo',
+          quantidade: 5
+        }), 1000)
+      );
+      setPedido(response);
+    };
+
+    fetchPedido();
+  }, [id]);
 
   const handleDelete = () => {
     setModalVisible(true);
   };
 
-  const handleFecharModal = () => {
-    setModalVisible(false);
+  const handleUpdate = () => {
+    navigate(`/adicionar-pedido/${id}`);
   };
 
-  const handleConfirmarExclusao = () => {
-    // Lógica para deletar o pedido (substitua com a sua implementação)
-    console.log(`Deletando pedido: ${pedido.id}`);
-
-    // Volta para a página anterior após a exclusão
+  const handleCancel = () => {
     navigate('/menu-pedido');
   };
 
+  const handleConfirmarExclusao = () => {
+    console.log(`Deletando pedido: ${pedido.id}`);
+    setModalVisible(false);
+    navigate('/menu-pedido');
+  };
+
+  if (!pedido) {
+    return <Layout title="Carregando..."><p>Carregando detalhes do pedido...</p></Layout>;
+  }
+
   return (
-    <div>
-      <Header />
-      <main>
-        <div className="back-button">
-          <a href="/menu-pedido">
-            <img src={backArrow} alt="Voltar" />
-          </a>
-        </div>
-        <hr className="menu-divider menu-divider-100" />
-        <h2 className="menu-title">PEDIDO</h2>
-        <hr className="menu-divider menu-divider-80" />
-
-        <div className="content">
-          <div className="action-buttons">
-            <a href={`/adicionar-pedido/${id}`} className="update-button">Atualizar</a>
-            <button className="delete-button" onClick={handleDelete}>Deletar</button>
+    <Layout title="PEDIDO">
+      <div className="content">
+        <form className="all-form">
+          <FormInput
+            label="Data"
+            id="data"
+            name="data"
+            value={pedido.data}
+            readOnly
+          />
+          <FormInput
+            label="Usuário"
+            id="usuario"
+            name="usuario"
+            value={pedido.usuario}
+            readOnly
+          />
+          <FormInput
+            label="Produto"
+            id="produto"
+            name="produto"
+            value={pedido.produto}
+            readOnly
+          />
+          <FormInput
+            label="Quantidade"
+            id="quantidade"
+            name="quantidade"
+            value={pedido.quantidade.toString()}
+            readOnly
+          />
+          <div className="form-buttons">
+            <button type="button" className="cancel-button" onClick={handleCancel}>Cancelar</button>
+            <button type="button" className="save-button" onClick={handleUpdate}>Atualizar</button>
           </div>
-          {/* Detalhes do Pedido */}
-          <div className="details">
-            <input type="text" readOnly value={pedido ? pedido.data : 'Data'} />
-            <input type="text" readOnly value={pedido ? pedido.usuario : 'Usuário'} />
-            <input type="text" readOnly value={pedido ? pedido.produto : 'Produto'} />
-            <input type="text" readOnly value={pedido ? pedido.quantidade : 'Quantidade'} />
-          </div>
-        </div>
-      </main>
-
-      {/* Modal de Confirmação */}
-      {modalVisible && (
-        <ModalAviso
-          mensagem={`Tem certeza que deseja deletar o pedido de "${pedido.usuario}"?`}
-          onFechar={handleFecharModal}
-          onConfirmar={handleConfirmarExclusao}
-        />
-      )}
-    </div>
+        </form>
+      </div>
+      
+      <Modal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        title="DELETAR PEDIDO"
+        content={
+          <>
+            <p>Você está prestes a <span className="delete-text">deletar</span> o pedido "<span id="pedido-id">Pedido #{pedido.id}</span>" do sistema. Esta ação é irreversível.</p>
+            <p>Detalhes do Pedido:</p>
+            <ul>
+              <li>ID: <span id="pedido-detail-id">{pedido.id}</span></li>
+              <li>Produto: <span id="pedido-detail-produto">{pedido.produto}</span></li>
+            </ul>
+            <p>Tem certeza que deseja proceder com a exclusão?</p>
+          </>
+        }
+        onConfirm={handleConfirmarExclusao}
+      />
+    </Layout>
   );
 };
 
