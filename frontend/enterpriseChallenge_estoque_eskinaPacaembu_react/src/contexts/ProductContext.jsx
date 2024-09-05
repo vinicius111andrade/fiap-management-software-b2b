@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ProductContext = createContext();
 
+
 export const useProducts = () => useContext(ProductContext);
 
 export const ProductProvider = ({ children }) => {

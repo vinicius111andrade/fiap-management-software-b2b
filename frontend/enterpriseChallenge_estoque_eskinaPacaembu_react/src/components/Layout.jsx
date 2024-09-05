@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BackButton from './BackButton';
+import { useNavigate } from 'react-router-dom';
 
 const Layout = ({ children, title, showBackButton = true, onBackClick, onUpdate, onDelete }) => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    if (onBackClick) {
+      onBackClick();
+    } else {
+      navigate(-1);
+    }
+  };
+
   return (
     <div>
       <main>
-        {showBackButton && <BackButton onClick={onBackClick} />}
+        {showBackButton && <BackButton onClick={handleBackClick} />}
         <h2 className="menu-title">{title}</h2>
         <hr className="menu-divider menu-divider-80" />
         <div className="content">

@@ -5,8 +5,8 @@ const teamMembers = [
   {
     name: "Henrique Franco da Paz",
     image: "/src/assets/img/henrique_franco.png",
-    github: "#",
-    linkedin: "#"
+    github: "https://github.com/HenriquexFiap",
+    linkedin: "http://linkedin.com/in/henrique-franco-da-paz-b36550249"
   },
   {
     name: "Rodrigo Calado",
@@ -17,8 +17,8 @@ const teamMembers = [
   {
     name: "Ana Julia de Oliveira Claudino",
     image: "/src/assets/img/ana_julia.png",
-    github: "#",
-    linkedin: "#"
+    github: "https://github.com/anajulia-oc",
+    linkedin: "https://www.linkedin.com/in/ana-julia-oliveira-c/"
   },
   {
     name: "Vinicius Andrade",

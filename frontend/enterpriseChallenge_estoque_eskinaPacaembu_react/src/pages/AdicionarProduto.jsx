@@ -4,7 +4,6 @@ import { useProducts } from '../contexts/ProductContext';
 import Layout from '../components/Layout';
 import Form from '../components/Form';
 import FormInput from '../components/FormInput';
-import FormSelect from '../components/FormSelect';
 
 const AdicionarProduto = () => {
   const navigate = useNavigate();
@@ -49,16 +48,6 @@ const AdicionarProduto = () => {
     navigate('/menu-produto');
   };
 
-  const tipoOptions = [
-    { value: 'tipo1', label: 'Tipo 1' },
-    { value: 'tipo2', label: 'Tipo 2' },
-  ];
-
-  const loteOptions = [
-    { value: 'lote1', label: 'Lote 1' },
-    { value: 'lote2', label: 'Lote 2' },
-  ];
-
   return (
     <Layout title={id ? "EDITAR PRODUTO" : "ADICIONAR PRODUTO"}>
       <Form onSubmit={handleSubmit} onCancel={handleCancel}>
@@ -71,13 +60,13 @@ const AdicionarProduto = () => {
           onChange={handleChange}
           required
         />
-        <FormSelect
+        <FormInput
           label="Tipo"
           id="tipo"
           name="tipo"
+          type="text"
           value={produto.tipo}
           onChange={handleChange}
-          options={tipoOptions}
           required
         />
         <FormInput
@@ -99,13 +88,13 @@ const AdicionarProduto = () => {
           onChange={handleChange}
           required
         />
-        <FormSelect
+        <FormInput
           label="Lote"
           id="lote"
           name="lote"
+          type="text"
           value={produto.lote}
           onChange={handleChange}
-          options={loteOptions}
           required
         />
       </Form>
