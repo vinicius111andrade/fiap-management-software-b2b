@@ -6,6 +6,19 @@ import Form from '../components/Form';
 import FormInput from '../components/FormInput';
 import FormSelect from '../components/FormSelect';
 
+const DataFetcher = () => {
+  useEffect(() => {
+
+  }, []);
+
+  return (
+    <div>
+      <h1>Data from API:</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+};
+
 const AdicionarProduto = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -18,14 +31,28 @@ const AdicionarProduto = () => {
     lote: ''
   });
 
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    if (id) {
-      const productToEdit = products.find(p => p.id === id);
-      if (productToEdit) {
-        setProduto(productToEdit);
-      }
-    }
-  }, [id, products]);
+    fetch('https://api.example.com/data')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            setData(data);
+            setLoading(false);
+            navigate('/menu-produto');
+          })
+          .catch(error => {
+            setError(error.message);
+            setLoading(false);
+          });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,6 +85,10 @@ const AdicionarProduto = () => {
     { value: 'lote1', label: 'Lote 1' },
     { value: 'lote2', label: 'Lote 2' },
   ];
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
+    if (!data) return null;
 
   return (
     <Layout title={id ? "EDITAR PRODUTO" : "ADICIONAR PRODUTO"}>
