@@ -17,13 +17,6 @@ Java, React, SQL
 - Via terminal entrar na pasta "fiap-management-software-b2b/frontend".
 - Rodar o comando: "npm run dev", sem as aspas.
 
-# Como rodar o backend
- 
-
-### 1 - Verificar no CMD se possui o JDK instalado:
-- javac -version.
-- caso não tenha instalar (https://www.oracle.com/br/java/technologies/downloads/#jdk22-windows).
-
 ### 2 - Oracle XE:
  - Oracle XE (https://www.oracle.com/br/database/technologies/xe-downloads.html)
  - Descompactar pasta
@@ -42,3 +35,21 @@ Java, React, SQL
  - senha (usar a mesma que utilizou no instalador do banco)
  - Name: FIAP / Nome do Host: localhost (deixar esse, apenas trocar caso tenha um servidor Oracle), porta 1521/ CID: xe
  -
+
+ # Como rodar o backend
+ ### 1 - Verificar no CMD se possui o JDK instalado:
+ - javac -version.
+ - caso nao tenha instalar (https://www.oracle.com/br/java/technologies/downloads/#jdk22-windows).
+
+ ### 2 - Rodar a api via IDE:
+ -instalar e acessar a IDE intellij (https://www.jetbrains.com/idea/download/?section=windows)
+ -abrir a pasta "fiap-management-software-b2b\backend\enterpriseChallenge_estoque_eskinaPacaembu"
+ -acessar e rodar arquivo: "main.class" (botao play ou shift + f10)
+ -os endpoints estarao disponiveis por padrao no endereco: "http://localhost:8080" (pode ser alterado no arquivo main)
+
+ ### 3 - Realizar chamadas api:
+ -instalar e acessar a ferramenta postman (https://www.postman.com/downloads/)
+ -importar o arquivo: "api_eskina_pacaembu.postman_collection" disponivel em: "fiap-management-software-b2b\backend\enterpriseChallenge_estoque_eskinaPacaembu\backend\postman_collection"
+
+
+ 
