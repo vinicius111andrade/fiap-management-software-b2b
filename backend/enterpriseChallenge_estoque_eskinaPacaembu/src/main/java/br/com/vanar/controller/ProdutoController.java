@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.*;
 import java.sql.SQLException;
 import java.util.List;
 
+
 @Path("produtos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -20,8 +21,10 @@ public class ProdutoController {
     }
 
     @GET
-    public List<Produto> listar() throws SQLException {
-        return produtoDao.listar();
+    public Response listar() throws SQLException {
+        List<Produto> listProduto = produtoDao.listar();
+
+        return Response.ok(listProduto).header("Access-Control-Allow-Origin", "*").build();
     }
 
     @GET
@@ -29,7 +32,7 @@ public class ProdutoController {
     public Response buscarPorId(@PathParam("id") int id) throws SQLException {
         try {
             Produto produto = produtoDao.pesquisar(id);
-            return Response.ok(produto).build();
+            return Response.ok(produto).header("Access-Control-Allow-Origin", "*").build();
         } catch (EntidadeNaoEncontradaException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -40,7 +43,7 @@ public class ProdutoController {
         produtoDao.cadastrar(produto);
         UriBuilder uri = uriInfo.getAbsolutePathBuilder();
         uri.path(String.valueOf(produto.getId()));
-        return Response.created(uri.build()).entity(produto).build();
+        return Response.created(uri.build()).entity(produto).header("Access-Control-Allow-Origin", "*").build();
     }
 
     @PUT
@@ -52,7 +55,7 @@ public class ProdutoController {
         } catch (EntidadeNaoEncontradaException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok().entity(produto).build();
+        return Response.ok().entity(produto).header("Access-Control-Allow-Origin", "*").build();
     }
 
     @DELETE
@@ -60,7 +63,7 @@ public class ProdutoController {
     public Response remover(@PathParam("id") int id) throws SQLException {
         try {
             produtoDao.remover(id);
-            return Response.noContent().build();
+            return Response.noContent().header("Access-Control-Allow-Origin", "*").build();
         } catch (EntidadeNaoEncontradaException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
