@@ -49,7 +49,7 @@ Java, React, SQL
 
  ### 3 - Realizar chamadas api:
  -instalar e acessar a ferramenta postman (https://www.postman.com/downloads/)
- -importar o arquivo: "api_eskina_pacaembu.postman_collection" disponivel em: "fiap-management-software-b2b\backend\enterpriseChallenge_estoque_eskinaPacaembu\backend\postman_collection"
+ -importar o arquivo: "api_eskina_pacaembu.postman_collection" disponivel em: "fiap-management-software-b2b\backend\postman_collection"
 
 
  
