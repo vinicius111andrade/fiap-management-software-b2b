@@ -10,7 +10,7 @@ function TestPostRequestCadastrarProduto() {
     const bodyData = {
       nm_nome: 'Atum',
       ds_tipo: 'Atum em olio',
-      nr_quantidade: 2
+      nr_quantidade: 2,
       vl_preco: 10.0
     };
 

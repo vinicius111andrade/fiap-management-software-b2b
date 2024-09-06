@@ -15,7 +15,7 @@ function TestPutRequestAlterarProduto() {
     const bodyData = {
       nm_nome: 'Atum engarrafado',
       ds_tipo: 'Atum',
-      nr_quantidade: 2
+      nr_quantidade: 2,
       vl_preco: 10.0
     };
 
