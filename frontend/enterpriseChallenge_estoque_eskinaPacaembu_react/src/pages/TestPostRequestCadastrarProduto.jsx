@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 
-function TestGetRequest() {
+function TestPostRequestCadastrarProduto() {
   const [responseData, setResponseData] = useState(null);
 
   const handleRequest = async () => {
-    const url = 'https://api.restful-api.dev/objects';
+    const url = 'http://localhost:8080/produtos';
 
-    // Define query parameters
-//     const params = {
-//       userId: 1,
-//       postId: 5
-//     };
-
-    // Construct the URL with query parameters
-//     const queryString = new URLSearchParams(params).toString();
-//     const fullUrl = `${url}?${queryString}`;
+    // The data you want to send in the request body
+    const bodyData = {
+      nm_nome: 'Atum',
+      ds_tipo: 'Atum em olio',
+      nr_quantidade: 2
+      vl_preco: 10.0
+    };
 
     try {
       const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(bodyData)
       });
 
       if (!response.ok) {
@@ -45,4 +44,4 @@ function TestGetRequest() {
   );
 }
 
-export default TestGetRequest;
+export default TestPostRequestCadastrarProduto;

@@ -9,7 +9,11 @@ import AppLayout from './components/AppLayout';
 import MenuPrincipal from './pages/MenuPrincipal.jsx';
 
 //Test Routes
-import TestGetRequest from './pages/TestGetRequest.jsx';
+import TestGetRequestListarProdutos from './pages/TestGetRequestListarProdutos.jsx';
+import TestGetRequestListarProdutosPorId from './pages/TestGetRequestListarProdutosPorId.jsx';
+import TestPostRequestCadastrarProduto from './pages/TestPostRequestCadastrarProduto.jsx';
+import TestPutRequestAlterarProduto from './pages/TestPutRequestAlterarProduto.jsx';
+import TestDelRequestDeletarProduto from './pages/TestDelRequestDeletarProduto.jsx';
 
 // Product routes
 import MenuProduto from './pages/MenuProduto.jsx';
@@ -52,7 +56,11 @@ const App = () => {
 
 
                   {/* Test Routes */}
-                  <Route path="/TestGetRequest" element={<TestGetRequest />} />
+                  <Route path="/TestGetRequestListarProdutos" element={<TestGetRequestListarProdutos />} />
+                  <Route path="/TestGetRequestListarProdutosPorId" element={<TestGetRequestListarProdutosPorId />} />
+                  <Route path="/TestPostRequestCadastrarProduto" element={<TestPostRequestCadastrarProduto />} />
+                  <Route path="/TestPutRequestAlterarProduto" element={<TestPutRequestAlterarProduto />} />
+                  <Route path="/TestDelRequestDeletarProduto" element={<TestDelRequestDeletarProduto />} />
 
                   {/* Product Routes */}
                   <Route path="/menu-produto" element={<MenuProduto />} />
