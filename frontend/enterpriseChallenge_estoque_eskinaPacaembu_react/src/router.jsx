@@ -8,6 +8,9 @@ import { SupplierProvider } from './contexts/SupplierContext';
 import AppLayout from './components/AppLayout';
 import MenuPrincipal from './pages/MenuPrincipal.jsx';
 
+//Test Routes
+import TestGetRequest from './pages/TestGetRequest.jsx';
+
 // Product routes
 import MenuProduto from './pages/MenuProduto.jsx';
 import AdicionarProduto from './pages/AdicionarProduto.jsx';
@@ -47,7 +50,12 @@ const App = () => {
                   {/* Main Menu */}
                   <Route path="/" element={<MenuPrincipal />} />
 
+
+                  {/* Test Routes */}
+                  <Route path="/TestGetRequest" element={<TestGetRequest />} />
+
                   {/* Product Routes */}
+                  <Route path="/menu-produto" element={<MenuProduto />} />
                   <Route path="/menu-produto" element={<MenuProduto />} />
                   <Route path="/adicionar-produto" element={<AdicionarProduto />} />
                   <Route path="/adicionar-produto/:id" element={<AdicionarProduto />} />
