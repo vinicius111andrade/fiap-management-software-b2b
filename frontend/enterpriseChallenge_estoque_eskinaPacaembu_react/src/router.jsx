@@ -9,6 +9,7 @@ import AppLayout from './components/AppLayout';
 import MenuPrincipal from './pages/MenuPrincipal.jsx';
 
 //Test Routes
+import TestGetRequestDemo from './pages/TestGetRequestDemo.jsx';
 import TestGetRequestListarProdutos from './pages/TestGetRequestListarProdutos.jsx';
 import TestGetRequestListarProdutosPorId from './pages/TestGetRequestListarProdutosPorId.jsx';
 import TestPostRequestCadastrarProduto from './pages/TestPostRequestCadastrarProduto.jsx';
@@ -56,6 +57,7 @@ const App = () => {
 
 
                   {/* Test Routes */}
+                  <Route path="/TestGetRequestDemo" element={<TestGetRequestDemo />} />
                   <Route path="/TestGetRequestListarProdutos" element={<TestGetRequestListarProdutos />} />
                   <Route path="/TestGetRequestListarProdutosPorId" element={<TestGetRequestListarProdutosPorId />} />
                   <Route path="/TestPostRequestCadastrarProduto" element={<TestPostRequestCadastrarProduto />} />
