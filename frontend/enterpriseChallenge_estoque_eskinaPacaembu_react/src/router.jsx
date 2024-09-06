@@ -8,6 +8,14 @@ import { SupplierProvider } from './contexts/SupplierContext';
 import AppLayout from './components/AppLayout';
 import MenuPrincipal from './pages/MenuPrincipal.jsx';
 
+//Test Routes
+import TestGetRequestDemo from './pages/TestGetRequestDemo.jsx';
+import TestGetRequestListarProdutos from './pages/TestGetRequestListarProdutos.jsx';
+import TestGetRequestListarProdutosPorId from './pages/TestGetRequestListarProdutosPorId.jsx';
+import TestPostRequestCadastrarProduto from './pages/TestPostRequestCadastrarProduto.jsx';
+import TestPutRequestAlterarProduto from './pages/TestPutRequestAlterarProduto.jsx';
+import TestDelRequestDeletarProduto from './pages/TestDelRequestDeletarProduto.jsx';
+
 // Product routes
 import MenuProduto from './pages/MenuProduto.jsx';
 import AdicionarProduto from './pages/AdicionarProduto.jsx';
@@ -47,7 +55,17 @@ const App = () => {
                   {/* Main Menu */}
                   <Route path="/" element={<MenuPrincipal />} />
 
+
+                  {/* Test Routes */}
+                  <Route path="/TestGetRequestDemo" element={<TestGetRequestDemo />} />
+                  <Route path="/TestGetRequestListarProdutos" element={<TestGetRequestListarProdutos />} />
+                  <Route path="/TestGetRequestListarProdutosPorId" element={<TestGetRequestListarProdutosPorId />} />
+                  <Route path="/TestPostRequestCadastrarProduto" element={<TestPostRequestCadastrarProduto />} />
+                  <Route path="/TestPutRequestAlterarProduto" element={<TestPutRequestAlterarProduto />} />
+                  <Route path="/TestDelRequestDeletarProduto" element={<TestDelRequestDeletarProduto />} />
+
                   {/* Product Routes */}
+                  <Route path="/menu-produto" element={<MenuProduto />} />
                   <Route path="/menu-produto" element={<MenuProduto />} />
                   <Route path="/adicionar-produto" element={<AdicionarProduto />} />
                   <Route path="/adicionar-produto/:id" element={<AdicionarProduto />} />
