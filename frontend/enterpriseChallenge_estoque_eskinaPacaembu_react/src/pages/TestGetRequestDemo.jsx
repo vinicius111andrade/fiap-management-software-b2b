@@ -4,7 +4,7 @@ function TestGetRequestListarProdutos() {
   const [responseData, setResponseData] = useState(null);
 
   const handleRequest = async () => {
-    const url = 'http://localhost:8080/produtos';
+    const url = 'https://api.restful-api.dev/objects';
 
     try {
       const response = await fetch(url, {
